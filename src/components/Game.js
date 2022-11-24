@@ -1,29 +1,32 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import styled from "styled-components";
+
 import useMousePosition from "../hooks/MousePosition";
 
-const playerStyle = {
-  position: "absolute",
-  left: "0px",
-  top: "0px",
-  width: "50px",
-  height: "50px",
-  textAlign: "center",
-  borderRadius: "50%",
-  backgroundColor: "red",
-  border: "5px solid black",
-  display: "none"
-};
+const StyledPlayerDiv = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: red;
+  border: 5px solid black;
 
-let startButtonStyle = {
-  textAlign: "center",
-  position: "absolute",
-  marginLeft: "auto",
-  marginRight: "auto",
-  left: "0",
-  right: "0",
-  top: "50%",
-  width: "min-content"
-};
+  display: none;
+`;
+
+const StyledStartButton = styled.button`
+  text-align: center;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  width: min-content;
+`;
 
 export function Game() {
 
@@ -92,8 +95,8 @@ export function Game() {
     <div style={{ height: "100%" }}>
       <h1>GameX</h1>
       {!gameRunning &&
-        <div style={startButtonStyle} onClick={startGame}>Start</div>}
-      <div style={playerStyle} ref={playerRef} />
+        <StyledStartButton onClick={startGame}>Start</StyledStartButton>}
+      <StyledPlayerDiv ref={playerRef} />
     </div>
   );
 }
